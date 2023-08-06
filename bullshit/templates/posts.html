@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Lecture's
+{% endblock %}
+
+{% block body %}
+    <style>
+    body{
+        background-color: white;
+    }
+    </style>
+    <div class="container mt-5 ">
+        <h1>Все vaky</h1>
+        {% for el in articles %}
+        <div class="alert alert-info">
+            <h2>Тема:{{ el.title }}</h2>
+            <p>{{ el.name }}{{ el.surname }}</p>
+            <p>{{ el.spec }}</p>
+            <a href="/posts/{{ el.id }}" class="btn btn-warning">More</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

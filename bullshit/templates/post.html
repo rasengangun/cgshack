@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: white;
+    }
+
+    .profile-pic {
+        max-width: 200px;
+        max-height: 200px;
+        border-radius: 50%;
+    }
+</style>
+<div class="container mt-5">
+    <h1>{{ post.name }} {{ post.surname }}</h1>
+    <div class="row">
+        <div class="col-md-4">
+            {% if post.photo %}
+                <img src="{{ url_for('static', filename='uploads/' + post.photo) }}" class="profile-pic" alt="Profile Picture">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/default_profile_pic.jpg') }}" class="profile-pic" alt="Profile Picture">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="alert alert-info">
+                <p>{{ post.title }}</p>
+                <p>{{ post.spec }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
